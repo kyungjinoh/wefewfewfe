@@ -1,0 +1,346 @@
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 0rem 1rem;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  margin-top: 3rem;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="medical-pattern" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="10" r="0.5" fill="white" opacity="0.05"/><circle cx="40" cy="40" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23medical-pattern)"/></svg>');
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 4rem 3rem 3rem 3rem;
+    align-items: center;
+    min-height: 60vh;
+  }
+  .hero-content {
+    max-width: 55%;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-section {
+    padding: 5rem 4rem 4rem 4rem;
+    min-height: 55vh;
+  }
+  .hero-content {
+    max-width: 50%;
+  }
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: white;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: fadeInUp 0.8s ease-out;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+@media (max-width: 767px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-ctas {
+    margin-top: 0rem;
+  }
+  
+  .btn {
+    font-size: 2rem;
+    min-width: 2220px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+}
+
+.hero-subheadline {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: rgba(255,255,255,0.95);
+  line-height: 1.5;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .hero-subheadline {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-subheadline {
+    font-size: 1.6rem;
+  }
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+@media (min-width: 768px) {
+  .hero-ctas {
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  min-width: 120px;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    min-width: 160px;
+  }
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  transform: translateY(0);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background: linear-gradient(135deg, #b91c1c, #dc2626);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255,255,255,0.2);
+}
+
+.btn-signup {
+  background: #22c55e;
+  color: white;
+  transform: translateY(0);
+}
+
+.btn-signup:hover, .btn-signup:focus {
+  background: #16a34a;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
+}
+
+.btn-dashboard {
+  background: white;
+  color: #1e40af;
+  transform: translateY(0);
+  border: 2px solid #1e40af;
+}
+
+.btn-dashboard:hover, .btn-dashboard:focus {
+  background: #1e40af;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(30, 64, 175, 0.4);
+}
+
+.hero-illustration {
+  margin-top: 1.5rem;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@media (min-width: 768px) {
+  .hero-illustration {
+    margin-top: 0;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-illustration {
+    margin-left: 3rem;
+  }
+}
+
+.medical-graphic {
+  font-size: 2rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  padding: 1.5rem 1rem;
+  display: inline-block;
+  color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .medical-graphic {
+    padding: 3rem 2rem;
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .medical-graphic {
+    padding: 3.5rem 2.5rem;
+    font-size: 3.5rem;
+  }
+}
+
+.medical-graphic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.medical-graphic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+.medical-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .medical-icon {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .medical-icon {
+    font-size: 4rem;
+  }
+}
+
+.medical-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+  .medical-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .medical-text {
+    font-size: 1.4rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-image-replacement {
+    display: block !important;
+  }
+} 

@@ -1,0 +1,95 @@
+import React, { useState } from 'react';
+// @ts-ignore
+import DashboardSidebar from './DashboardSidebar';
+import { MdAssignmentTurnedIn } from 'react-icons/md';
+import './Dashboard.css';
+
+const symptomOptions = [
+  'Hives',
+  'Swelling',
+  'Shortness of breath',
+  'Nausea',
+  'Vomiting',
+  'Diarrhea',
+  'Dizziness',
+  'Other',
+];
+
+const LogCondition: React.FC = () => {
+  const [step, setStep] = useState(0);
+  const [time, setTime] = useState('');
+  const [severity, setSeverity] = useState(3);
+  const [symptoms, setSymptoms] = useState<string[]>([]);
+  const [symptomDesc, setSymptomDesc] = useState('');
+
+  const handleSymptomChange = (option: string) => {
+    setSymptoms(prev =>
+      prev.includes(option)
+        ? prev.filter(s => s !== option)
+        : [...prev, option]
+    );
+  };
+
+  return (
+    <div className="dashboard-layout">
+      <DashboardSidebar />
+      <main className="dashboard-main log-reaction-main">
+        <div className="log-reaction-landing">
+          {step === 0 ? (
+            <div className="log-reaction-card">
+              <div className="log-reaction-icon">
+                <MdAssignmentTurnedIn size={48} />
+              </div>
+              <h1 className="log-reaction-title">Log a New Condition</h1>
+              <p className="log-reaction-desc">Quickly record a new allergic condition or symptom event. Stay on top of your health and help your care team with accurate, up-to-date information.</p>
+              <button className="log-reaction-btn" onClick={() => setStep(1)}>Begin Logging</button>
+            </div>
+          ) : (
+            <div className="log-reaction-card step-card">
+              <div className="log-reaction-icon">
+                <MdAssignmentTurnedIn size={40} />
+              </div>
+              <h2 className="log-reaction-title">Step 1: Condition Details</h2>
+              <form className="log-reaction-form">
+                <label className="log-reaction-label">
+                  Time of Condition
+                  <input type="datetime-local" className="log-reaction-input" value={time} onChange={e => setTime(e.target.value)} required />
+                </label>
+                <label className="log-reaction-label">
+                  Severity: <span style={{fontWeight: 400, color: '#64748b', marginLeft: 8}}>{severity}</span>
+                  <input type="range" min={1} max={5} step={0.1} value={severity} onChange={e => setSeverity(Number(e.target.value))} className="log-reaction-slider" />
+                  <div className="log-reaction-severity-labels">
+                    <span>Mild</span>
+                    <span>Severe</span>
+                  </div>
+                </label>
+                <label className="log-reaction-label">
+                  Symptoms (select all that apply)
+                  <div className="log-reaction-symptom-options">
+                    {symptomOptions.map(option => (
+                      <label key={option} className="log-reaction-symptom-option">
+                        <input
+                          type="checkbox"
+                          checked={symptoms.includes(option)}
+                          onChange={() => handleSymptomChange(option)}
+                        />
+                        {option}
+                      </label>
+                    ))}
+                  </div>
+                </label>
+                <label className="log-reaction-label">
+                  Symptom Description (optional)
+                  <textarea className="log-reaction-textarea" value={symptomDesc} onChange={e => setSymptomDesc(e.target.value)} rows={3} placeholder="Describe symptoms..." />
+                </label>
+                <button className="log-reaction-btn" type="submit" disabled>Next</button>
+              </form>
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default LogCondition; 
